@@ -8,10 +8,12 @@ st.sidebar.title("Ссылки на технологии:")
 st.sidebar.link_button("FEniCS project", "https://fenicsproject.org/")
 st.sidebar.link_button("Gmsh", "https://gmsh.info/")
 
-st.sidebar.title("Ссылки на технологии:")
-st.sidebar.link_button("Github проекта №1", "https://streamlit.io/gallery")
-st.sidebar.link_button("Github проекта NumPy", "https://streamlit.io/gallery")
-st.sidebar.link_button("Github проекта Gmsh", "https://streamlit.io/gallery")
+st.sidebar.title("Репозиторий текущего проекта:")
+st.sidebar.link_button("Github проекта №1", "https://github.com/dsbarinov1/FEM-Project-1")
+
+st.sidebar.title("Репозитории предыдущих проектов:")
+st.sidebar.link_button("Github проекта NumPy", "https://github.com/dsbarinov1/FEM-Numpy")
+st.sidebar.link_button("Github проекта Gmsh", "https://github.com/dsbarinov1/FEM-GMSH")
 
 show_pages(
     [
