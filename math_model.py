@@ -13,7 +13,7 @@ if menu == "Постановка задачи":
     r"""
     ##
     Рассматривается математическая модель, описывающая распределение температуры при наличии фазового перехода "твердая фаза —
-    жидкая фаза" при некоторой заданной температуре фазового перехода $ \ T^∗ $  в области  $ \ Ω =  Ω^-  ∪ Ω^-  ∪ S $.
+    жидкая фаза" при некоторой заданной температуре фазового перехода $ \ T^* $  в области  $ \Omega =  \Omega^-  \cup \Omega^-  \cup S $.
     ##
     """
     image1 = Image.open(r"Field.jpg")
@@ -21,10 +21,10 @@ if menu == "Постановка задачи":
     r"""
     #####
     #####
-    $  Ω^+ (t)  $ - область занятая жидкой фазой
-    ###### где  $  \ Ω^+ (t) = \{ x: x \in Ω, T(x, t) > T^* \} $
-    $  Ω^- (t)  $ - область занятая твердой фазой
-    ###### где  $  \ Ω^- (t) = \{ x: x \in Ω, T(x, t) < T^* \} $
+    $  \Omega^+ (t)  $ - область занятая жидкой фазой
+    ###### где  $  \Omega^+ (t) = \{ x: x \in \Omega, T(x, t) > T^* \} $
+    $  \Omega^- (t)  $ - область занятая твердой фазой
+    ###### где  $  \Omega^- (t) = \{ x: x \in \Omega, T(x, t) < T^* \} $
     Фазовый переход происходит на границе раздела фаз $ \ S = S(t) $
     ####
     Для моделирования процессов теплопереноса с фазовыми переходами используется классическая модель Стефана, описывающая
@@ -35,18 +35,20 @@ if menu == "Постановка задачи":
         r''' (\alpha(\phi) + \rho^{+} L \phi^{'})\frac{\partial T}{\partial t} - div (\lambda(\phi) \operatorname {grad} \ T) = 0''')
     r"""
     #####
-    ###### где  $  L  $ -  удельная теплота фазового перехода.
+    где  $  L  $ -  удельная теплота фазового перехода."""
+
+    """
     Для коэффициентов уравнения имеем следующие соотношения
         """
     st.latex(r''' \alpha(\phi) =  \rho^{-} c^{-} + \phi (\rho^{+} c^{+} - \rho^{-} c^{-})''')
     st.latex(r''' \lambda(\phi) =  \lambda^{-} + \phi (\lambda^{+} - \lambda^{-})''')
-    st.latex(r''' \phi_\bigtriangleup = \begin{cases}
+    st.latex(r''' \phi = \begin{cases}
                 \ 0,                                                           &\quad T < T^{*} \\
                 \ 1,                                                           &\quad T > T^{*} \end{cases}''')
 
     r"""
     #####
-    ###### где  $  \rho^+, c^+  $ и $  \rho^-, c^-  $ -  плотность и удельная теплоемкость талой и мерзлой зоны, соответственно.
+    где  $  \rho^+, c^+  $ и $  \rho^-, c^-  $ -  плотность и удельная теплоемкость талой и мерзлой зоны, соответственно.
 
     Поскольку рассматривается процесс распространения тепла в пористой среде, то для коэффициентов имеем:
     """
@@ -59,32 +61,32 @@ if menu == "Постановка задачи":
     Для коэффициентов теплопроводности в талой и мерзлой зоне имеем аналогичные соотношения
 
     """
-    st.latex(r''' \lambda^{-} = (1 - m) \lambda_sc + m \lambda_i ''')
-    st.latex(r''' \lambda^{+} = (1 - m) \lambda_sc + m \lambda_w ''')
+    st.latex(r''' \lambda^{-} = (1 - m) \lambda_{sc} + m \lambda_i ''')
+    st.latex(r''' \lambda^{+} = (1 - m) \lambda_{sc} + m \lambda_w ''')
     r"""
     #####
     На практике, фазовые превращения не происходят мгновенно и могут происходить в малом интервале температуры $ [T^* − ∆, T^* + ∆]. $
-    В качестве функции $ φ  $ можно взять $  φ∆ $ :
+    В качестве функции $ \phi  $ можно взять $  \phi_{\Delta} $ :
     """
-    st.latex(r''' \phi (T)_\bigtriangleup = \begin{cases}
-                \ 0,                                                           &\quad T \leq T^{*} - \bigtriangleup,\\
+    st.latex(r''' \phi_\Delta (T) = \begin{cases}
+                \ 0,                                                           &\quad T \leq T^{*} - \Delta,\\
                 \\
-                \ \frac{T - T^{*} + \bigtriangleup}{2 \bigtriangleup},         &\quad T^{*} - \bigtriangleup < T < T^{*} + \bigtriangleup \\
+                \ \frac{T - T^{*} + \Delta}{2 \Delta},         &\quad T^{*} - \Delta < T < T^{*} + \Delta \\
                 \\
-                \ 1,                                                           &\quad T \geq T^{*} + \bigtriangleup\end{cases}''')
-    st.latex(r''' \phi (T)_\bigtriangleup^{'} = \begin{cases}
-                    \ 0,                                  &\quad T \leq T^{*} - \bigtriangleup,\\
+                \ 1,                                                           &\quad T \geq T^{*} + \Delta\end{cases}''')
+    st.latex(r''' \phi^{'}_\Delta (T) = \begin{cases}
+                    \ 0,                                  &\quad T \leq T^{*} - \Delta,\\
                     \\
-                    \ \frac{1}{2 \bigtriangleup},         &\quad T^{*} - \bigtriangleup < T < T^{*} + \bigtriangleup \\
+                    \ \frac{1}{2 \Delta},         &\quad T^{*} - \Delta < T < T^{*} + \Delta \\
                     \\
-                    \ 0,                                  &\quad T \geq T^{*} + \bigtriangleup\end{cases}''')
+                    \ 0,                                  &\quad T \geq T^{*} + \Delta\end{cases}''')
     r"""
     #####
-    Тогда получим следующее уравнение для температуры в области $ Ω $:
+    Тогда получим следующее уравнение для температуры в области $ \Omega $:
 
     """
 
-    st.latex(r''' (\alpha(\phi) + \rho^{+} L \phi_\bigtriangleup^{'})\frac{\partial T}{\partial t} - div (\lambda(\phi) \operatorname {grad} (T)) = 0''')
+    st.latex(r''' (\alpha(\phi_{\Delta}) + \rho^{+} L \phi_{\Delta}^{'})\frac{\partial T}{\partial t} - div (\lambda(\phi_{\Delta}) \operatorname {grad} (T)) = 0''')
     r"""
     #####
     Полученное уравнение является стандартным нелинейным параболическим уравнением.

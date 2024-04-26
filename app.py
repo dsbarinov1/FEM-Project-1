@@ -21,6 +21,7 @@ show_pages(
         Page("goals.py", "Цель и задачи"),
         Page("math_model.py", "Математическая модель"),
         Page("FE_approximation.py", "Конечно-элементная аппроксимация"),
+        Page("mesh.py", "Расчетная сетка")
 
     ]
 )
