@@ -1,6 +1,3 @@
-import fenics
-from dolfin import *
-from ufl import coefficient
 import streamlit as st
 
 st.title("Численная реализация")
