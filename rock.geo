@@ -33,3 +33,7 @@ Physical Surface(1) = {8}; // группа поверхностей
 
 // Создаем двумерную сетку
 Mesh 2;
+
+Color Blue{ Physical Line{ 1 }; }
+Color Red{ Physical Line{ 2 }; }
+Color Purple{ Surface{ 8 }; }
