@@ -17,7 +17,7 @@ r"""
 """
 code2 = r"""
 DAY = 86400
-timestep = 0.5 * DAY
+timestep = 0.1 * DAY
 rhol = 6.0e7
 cros = 2.0e6
 crol = 2.5e6
@@ -109,7 +109,7 @@ path = 'results1/'
 file = open("rezult.txt","w+")
 T_file = File(f'{path}t.pvd')
 
-for t in range (0, 30*DAY, int(timestep)):
+for t in range (0, 60*DAY, int(timestep)):
     solve(a == L , T, bc)
     T0.assign(T)
     T_file << (T, t)

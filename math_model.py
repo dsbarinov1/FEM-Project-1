@@ -87,14 +87,22 @@ if menu == "Начальные и краевые условия":
     ####
     #### Начальные и краевые условия
     """
-    st.latex( r''' T(x, 0) = T_0,  \ \ \ \ \  x \in \Omega''')
-    r"""
-    ####
-    ####
+
+    col1, col2 = st.columns(2, gap="small")
+
+    with col1:
+        st.latex( r''' T(x, 0) = T_0,  \ \ \ \ \  x \in \Omega''')
+        r"""
+        ####
+        ####
         """
-    st.latex(r''' T(x, t) = g(x),    \ \ \ \ \       x \in Г_1''')
-    st.latex(r''' -k \frac{\partial T}{\partial n} = 0,   \ \ \ \ \    x \in Г_2''')
-    r"""
-    ####
-    где $ Γ_1 $ - место контакта с замораживающим каналом
-    """
+        st.latex(r''' T(x, t) = g(x),    \ \ \ \ \       x \in Г_1''')
+        st.latex(r''' -k \frac{\partial T}{\partial n} = 0,   \ \ \ \ \    x \in Г_2''')
+        r"""
+        ####
+        где $ Γ_1 $ - место контакта с замораживающим каналом
+        """
+
+    with col2:
+        image1 = Image.open(r"Field.png")
+        st.image(image1, caption = 'Рис.1. Расчетная область')
